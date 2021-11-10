@@ -10,6 +10,14 @@
 
     <string name="predict_camera">Camera</string>
     <string name="predict_gallery">Gallery</string>
+    //buttons
+    <string name="btn_predict">Predict</string>
+    <string name="btn_camera">Camera</string>
+    <string name="btn_gallery">Gallery</string>
+    <string name="btn_solution">Get solution</string>
 
+    //text
+    <string name="tv_disease_name">Disease name:</string>
+    <string name="tv_probabilities">Probabilities:</string>
 
 </resources>
