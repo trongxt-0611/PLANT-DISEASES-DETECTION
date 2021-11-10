@@ -206,7 +206,9 @@ public class PredictionFragment extends Fragment {
                     tvDiseaseName.setText(diseaseInfo.getResponse_class());
                     tvPercent.setText(diseaseInfo.getResponse_confident());
                     if(!diseaseInfo.getResponse_class().toLowerCase(Locale.ROOT).contains("healthy")){
-                        addButton();
+                        if(layoutSolution.getChildCount() == 0){
+                            addButton();
+                        }
                     }else {
                         if(layoutSolution.getChildCount() > 0){
                             layoutSolution.removeAllViews();
