@@ -4,12 +4,16 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,10 +33,18 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Random;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -43,11 +56,13 @@ import team.loser.plantdiseasedetection.Api.ApiServices;
 import team.loser.plantdiseasedetection.Api.Constants;
 import team.loser.plantdiseasedetection.R;
 import team.loser.plantdiseasedetection.models.Disease;
+import team.loser.plantdiseasedetection.utils.ImageUtil;
 import team.loser.plantdiseasedetection.utils.RealPathUtil;
 
 public class PredictionFragment extends Fragment {
-    public static final int CAMERA_ACTION_CODE = 1;
+    public static final int CAMERA_REQUEST_CODE = 1;
     private static final int GALLERY_REQUEST_CODE = 69;
+    private static final int WRITE_EXTERNAL_REQUEST_CODE = 96;
     public static final String TAG = PredictionFragment.class.getName();
     private ImageButton btnTakePt,btnGallery;
     private Button btnPredict;
@@ -55,16 +70,22 @@ public class PredictionFragment extends Fragment {
     private ImageView imvDiseaseImg;
     private Uri mUri;
     private ProgressDialog mLoader;
+    private File mFile;
+    private String mCurrentPhotoPath = null;
+    private LinearLayout layoutSolution;
+
     private ActivityResultLauncher<Intent> mActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
-                    Log.e(TAG, "onActivityResult");
+                    mFile = null;
                     if(result.getResultCode() == Activity.RESULT_OK && result.getData()!=null){
                         Intent data = result.getData();
                         Uri uri = data.getData();
                         mUri = uri;
+                        String realPath = RealPathUtil.getRealPath(getActivity(), mUri);
+                        mFile = new File(realPath);
                         try {
                             ContentResolver cr = getActivity().getContentResolver();
                             Bitmap bitmap = MediaStore.Images.Media.getBitmap(cr, uri);
@@ -82,18 +103,59 @@ public class PredictionFragment extends Fragment {
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
-                    if(result.getResultCode() == Activity.RESULT_OK && result.getData()!=null){
-                        Intent data = result.getData();
-                        Uri uri = data.getData();
-                        mUri = uri;
-                        Bundle extras = data.getExtras();
-                        Bitmap imageBitmap = (Bitmap) extras.get("data");
-                        imvDiseaseImg.setImageBitmap(imageBitmap);
+                    mFile = null;
+                    if(result.getResultCode() == Activity.RESULT_OK ){
+                            ImageUtil.galleryAddPic(getActivity(), mCurrentPhotoPath);
+                            mFile = new File(mCurrentPhotoPath);
+                            ImageUtil.setPic(imvDiseaseImg,mCurrentPhotoPath);
                     }
                 }
             }
     );
 
+    private File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
+
+        // Save a file: path for use with ACTION_VIEW intents
+        mCurrentPhotoPath = image.getAbsolutePath();
+        return image;
+    }
+    private void openCamera() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        // Ensure that there's a camera activity to handle the intent
+        if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+            // Create the File where the photo should go
+            File photoFile = null;
+            try {
+                photoFile = createImageFile();
+            } catch (IOException ex) {
+                // Error occurred while creating the File
+            }
+            // Continue only if the File was successfully created
+            if (photoFile != null) {
+                Uri photoURI = FileProvider.getUriForFile(getContext(),
+                        "com.example.android.fileprovider",
+                        photoFile);
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                mActivityResultLauncherCamera.launch(takePictureIntent);
+            }
+        }
+    }
+    private void openGallery() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        mActivityResultLauncher.launch(Intent.createChooser(intent,"Select picture"));
+
+    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -114,26 +176,25 @@ public class PredictionFragment extends Fragment {
         btnPredict.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mUri != null){
+                if(mFile != null){
                     callApiSendImage();
                 }
                 else{
-                    Toast.makeText(getContext(), "dasdasda",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "No image to predict",Toast.LENGTH_LONG).show();
                 }
             }
         });
         btnTakePt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onClickRequestPermission(CAMERA_ACTION_CODE);
+                onClickRequestPermission(CAMERA_REQUEST_CODE);
+                onClickRequestPermission(WRITE_EXTERNAL_REQUEST_CODE);
             }
         });
     }
     private void callApiSendImage() {
         mLoader.show();
-        String realPath = RealPathUtil.getRealPath(getActivity(), mUri);
-        Log.e("callApi", realPath);
-        File file = new File(realPath);
+        File file = mFile;
         RequestBody requestBodyImage = RequestBody.create(MediaType.parse("multipart/form-data"), file);
         MultipartBody.Part mulPartBodyImage = MultipartBody.Part.createFormData(Constants.KEY_IMAGE, file.getName(), requestBodyImage);
         ApiServices.apiServices.sendImage(mulPartBodyImage).enqueue(new Callback<Disease>() {
@@ -144,6 +205,13 @@ public class PredictionFragment extends Fragment {
                 if(diseaseInfo != null) {
                     tvDiseaseName.setText(diseaseInfo.getResponse_class());
                     tvPercent.setText(diseaseInfo.getResponse_confident());
+                    if(!diseaseInfo.getResponse_class().toLowerCase(Locale.ROOT).contains("healthy")){
+                        addButton();
+                    }else {
+                        if(layoutSolution.getChildCount() > 0){
+                            layoutSolution.removeAllViews();
+                        }
+                    }
                 }
             }
 
@@ -166,8 +234,8 @@ public class PredictionFragment extends Fragment {
                 }
                 return;
 
-            case CAMERA_ACTION_CODE:
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            case CAMERA_REQUEST_CODE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
                 {
                     Toast.makeText(getContext(), "camera permission granted", Toast.LENGTH_LONG).show();
                     openCamera();
@@ -176,22 +244,6 @@ public class PredictionFragment extends Fragment {
                 {
                     Toast.makeText(getContext(), "camera permission denied", Toast.LENGTH_LONG).show();
                 }
-        }
-//        if(requestCode == GALLERY_REQUEST_CODE){
-//            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-//                openGallery();
-//            }
-//        }
-    }
-
-    private void openCamera() {
-
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if(intent.resolveActivity(getActivity().getPackageManager()) != null){
-            mActivityResultLauncherCamera.launch(Intent.createChooser(intent,"Take a photo"));
-        }
-        else{
-            Toast.makeText(getContext(), "can not open camera", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -210,35 +262,44 @@ public class PredictionFragment extends Fragment {
                     ActivityCompat.requestPermissions(getActivity(), permissions, GALLERY_REQUEST_CODE);
                 }
                 return;
-            case CAMERA_ACTION_CODE:
+            case CAMERA_REQUEST_CODE:
                 if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M){
                     openCamera();
                     return;
                 }
-                if(ActivityCompat.checkSelfPermission(getContext(),Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
+                if(ActivityCompat.checkSelfPermission(getContext(),Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(getContext(),Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
                     openCamera();
                 }
                 else {
-                    String [] permissions = {Manifest.permission.CAMERA};
-                    ActivityCompat.requestPermissions(getActivity(), permissions, CAMERA_ACTION_CODE);
+                    String [] permissions = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                    ActivityCompat.requestPermissions(getActivity(), permissions, CAMERA_REQUEST_CODE);
                 }
                 return;
         }
 
     }
-
-    private void openGallery() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        mActivityResultLauncher.launch(Intent.createChooser(intent,"Select picture"));
-
+    private void addButton(){
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        Button btn_solution = new Button(getContext());
+        btn_solution.setText(R.string.btn_solution);
+        btn_solution.setId(R.id.btn_solution);
+        btn_solution.setBackground(getActivity().getResources().getDrawable(R.drawable.custom_button));
+        layoutSolution.addView(btn_solution,params);
+        btn_solution.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(),"Go to solution fragment", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
-
     private void setControls(View view) {
         //init Progress dialog
         mLoader = new ProgressDialog(getActivity());
         mLoader.setMessage("Please wait...");
+        layoutSolution = view.findViewById(R.id.layout_solution);
         btnTakePt = view.findViewById(R.id.btn_take_photo);
         btnGallery = view.findViewById(R.id.btn_open_gallery);
         tvDiseaseName = view.findViewById(R.id.tv_disease_name);
@@ -246,4 +307,5 @@ public class PredictionFragment extends Fragment {
         imvDiseaseImg = view.findViewById(R.id.img_disease);
         btnPredict = view.findViewById(R.id.btn_predict);
     }
+
 }
