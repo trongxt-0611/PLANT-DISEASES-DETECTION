@@ -8,13 +8,13 @@ import numpy as np
 dir = os.path.dirname(os.path.realpath(__file__))
 IMAGE_SHAPE = (256, 256)
 model = keras.models.load_model('my_model.h5')
-classes = ['Pepper_bell_Bacterial_spot', 'Pepper_bell_healthy',
- 'Potato_Early_blight' ,'Potato_Late_blight' ,'Potato_healthy',
- 'Tomato_Bacterial_spot', 'Tomato_Early_blight', 'Tomato_Late_blight',
- 'Tomato_Leaf_Mold', 'Tomato_Septoria_leaf_spot',
- 'Tomato_Spider_mites_Two_spotted_spider_mite', 'Tomato_Target_Spot',
- 'Tomato_Tomato_YellowLeaf_Curl_Virus', 'Tomato_Tomato_mosaic_virus',
- 'Tomato_healthy']
+classes = ['Pepper bell Bacterial_spot', 'Pepper bell healthy',
+ 'Potato Early blight' ,'Potato Late blight' ,'Potato healthy',
+ 'Tomato Bacterial spot', 'Tomato Early blight', 'Tomato Late blight',
+ 'Tomato Leaf Mold', 'Tomato Septoria leaf spot',
+ 'Tomato Spider mites Two spotted spider mite', 'Tomato Target Spot',
+ 'Tomato YellowLeaf Curl Virus', 'Tomato mosaic virus',
+ 'Tomato healthy']
 
 def load_image(filename):
     img = cv2.imread(os.path.join(dir, filename))

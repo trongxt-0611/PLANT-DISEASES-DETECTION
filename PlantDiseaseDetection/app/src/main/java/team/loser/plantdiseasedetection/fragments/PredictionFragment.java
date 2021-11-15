@@ -203,8 +203,14 @@ public class PredictionFragment extends Fragment {
                 mLoader.dismiss();
                 Disease diseaseInfo = response.body();
                 if(diseaseInfo != null) {
-                    tvDiseaseName.setText(diseaseInfo.getResponse_class());
-                    tvPercent.setText(diseaseInfo.getResponse_confident());
+                    String disease = diseaseInfo.getResponse_class();
+                    tvDiseaseName.setText(disease);
+                    String confident = diseaseInfo.getResponse_confident();
+                    float c = Float.parseFloat(confident);
+                    float roundDbl = (float) (Math.round(c*10000.0)/100.0);
+                    tvPercent.setText(roundDbl + " %");
+                    String timeStamp = diseaseInfo.getResponse_time();
+                    //TODO: SQLite
                     if(!diseaseInfo.getResponse_class().toLowerCase(Locale.ROOT).contains("healthy")){
                         if(layoutSolution.getChildCount() == 0){
                             addButton();
@@ -293,6 +299,7 @@ public class PredictionFragment extends Fragment {
         btn_solution.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //TODO: solution
                 Toast.makeText(getContext(),"Go to solution fragment", Toast.LENGTH_SHORT).show();
             }
         });

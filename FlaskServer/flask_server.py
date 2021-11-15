@@ -18,7 +18,7 @@ def handle_request():
     imagefile.save(filename)
     # predict 
     res = make_predict(filename)
-    time = datetime.now().strftime("%d %m %Y %H %M %S")
+    time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     return flask.jsonify(response_class=str(res["class"]),
                          response_confident=str(res["confident"]),
                          response_time = time)
