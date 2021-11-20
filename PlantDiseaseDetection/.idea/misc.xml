@@ -6,8 +6,10 @@
         <entry key="..\:/Users/XUAN TRONG/Desktop/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.16574074074074074" />
         <entry key="..\:/Users/XUAN TRONG/Desktop/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/drawable/custom_background.xml" value="0.16574074074074074" />
         <entry key="..\:/Users/XUAN TRONG/Desktop/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/drawable/custom_button.xml" value="0.16574074074074074" />
+        <entry key="..\:/Users/XUAN TRONG/Desktop/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/drawable/ic_baseline_delete_forever_24.xml" value="0.12962962962962962" />
         <entry key="..\:/Users/XUAN TRONG/Desktop/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/drawable/ic_launcher_background.xml" value="0.16574074074074074" />
         <entry key="..\:/Users/XUAN TRONG/Desktop/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/drawable/predict_background.xml" value="0.19675925925925927" />
+        <entry key="..\:/Users/XUAN TRONG/Desktop/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/drawable/rounded_corner.xml" value="0.1" />
         <entry key="..\:/Users/XUAN TRONG/Desktop/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/drawable/shadow_background.xml" value="0.16574074074074074" />
         <entry key="..\:/Users/XUAN TRONG/Desktop/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/layout/activity_home.xml" value="0.264" />
         <entry key="..\:/Users/XUAN TRONG/Desktop/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/layout/activity_main.xml" value="0.176" />
@@ -15,6 +17,7 @@
         <entry key="..\:/Users/XUAN TRONG/Desktop/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/layout/fragment_history.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/XUAN TRONG/Desktop/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/XUAN TRONG/Desktop/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/layout/fragment_prediction.xml" value="0.264" />
+        <entry key="..\:/Users/XUAN TRONG/Desktop/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/layout/history_item.xml" value="0.2" />
         <entry key="..\:/Users/XUAN TRONG/Desktop/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/layout/layout_header_nav.xml" value="0.176" />
         <entry key="..\:/Users/XUAN TRONG/Desktop/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/menu/menu_nav.xml" value="0.1" />
         <entry key="..\:/Users/XUAN TRONG/Desktop/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/xml/file_paths.xml" value="0.11574074074074074" />

@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$PROJECT_DIR$/../../../../XUAN%20TRONG/AppData/Local/Android/Sdk/icons/material/materialicons/image_search/baseline_image_search_24.xml" />
+                                      <entry key="url" value="file:/$PROJECT_DIR$/../../../../XUAN%20TRONG/AppData/Local/Android/Sdk/icons/material/materialicons/delete_forever/baseline_delete_forever_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,7 +28,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_baseline_image_search_24" />
+                            <entry key="color" value="e00000" />
+                            <entry key="outputName" value="ic_baseline_delete_forever_24" />
                             <entry key="sourceFile" value="C:\Users\XUAN TRONG\Desktop\PLANT-DISEASES-DETECTION\PlantDiseaseDetection" />
                           </map>
                         </option>

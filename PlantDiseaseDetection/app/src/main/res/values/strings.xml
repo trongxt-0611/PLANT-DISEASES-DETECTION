@@ -19,5 +19,6 @@
     //text
     <string name="tv_disease_name">Disease name:</string>
     <string name="tv_probabilities">Probabilities:</string>
+    <string name="tv_predict_history">Predict history:</string>
 
 </resources>

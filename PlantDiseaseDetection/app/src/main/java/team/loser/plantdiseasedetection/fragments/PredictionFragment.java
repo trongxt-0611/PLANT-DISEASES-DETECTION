@@ -55,6 +55,7 @@ import retrofit2.Response;
 import team.loser.plantdiseasedetection.Api.ApiServices;
 import team.loser.plantdiseasedetection.Api.Constants;
 import team.loser.plantdiseasedetection.R;
+import team.loser.plantdiseasedetection.Sqlite.HistoryDatabase;
 import team.loser.plantdiseasedetection.models.Disease;
 import team.loser.plantdiseasedetection.utils.ImageUtil;
 import team.loser.plantdiseasedetection.utils.RealPathUtil;
@@ -211,6 +212,8 @@ public class PredictionFragment extends Fragment {
                     tvPercent.setText(roundDbl + " %");
                     String timeStamp = diseaseInfo.getResponse_time();
                     //TODO: SQLite
+                    Disease predicted = new Disease(disease, roundDbl+" %", timeStamp);
+                    insertToPredictHistory(predicted);
                     if(!diseaseInfo.getResponse_class().toLowerCase(Locale.ROOT).contains("healthy")){
                         if(layoutSolution.getChildCount() == 0){
                             addButton();
@@ -230,6 +233,11 @@ public class PredictionFragment extends Fragment {
             }
         });
     }
+    //add to Sqlite
+    private void insertToPredictHistory(Disease predicted) {
+        HistoryDatabase.getInstance(getContext()).historyDAO().insertDisease(predicted);
+    }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
