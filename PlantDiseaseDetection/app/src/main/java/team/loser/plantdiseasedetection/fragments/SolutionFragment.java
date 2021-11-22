@@ -1,11 +1,21 @@
 package team.loser.plantdiseasedetection.fragments;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 
 import team.loser.plantdiseasedetection.R;
 import team.loser.plantdiseasedetection.models.DiseaseSolution;
@@ -18,7 +28,8 @@ import team.loser.plantdiseasedetection.models.DiseaseSolution;
  */
 public class SolutionFragment extends Fragment {
     private View mView;
-    private TextView tvTest;
+    private TextView tvNameEN, tvNameVN, tvSymptom, tvPathogen, tvCure;
+    private ImageView img1 ,img2, img3, img4;
     private DiseaseSolution mDiseaseSolution;
     // TODO: Rename and change types and number of parameters
     public static SolutionFragment newInstance(DiseaseSolution solution) {
@@ -42,9 +53,57 @@ public class SolutionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_solution, container, false);
-        tvTest = mView.findViewById(R.id.tv_solution);
-
-        tvTest.setText(mDiseaseSolution.getNameDisease_VN());
+        setControls(mView);
+        setEvents();
         return mView;
+    }
+
+    private void setEvents() {
+        tvNameEN.setText(mDiseaseSolution.getNameDisease_ENG());
+        tvNameVN.setText(mDiseaseSolution.getNameDisease_VN());
+        ArrayList<String> urls = new ArrayList<>();
+        urls.add(mDiseaseSolution.getImage1());
+        urls.add(mDiseaseSolution.getImage2());
+        urls.add(mDiseaseSolution.getImage3());
+        urls.add(mDiseaseSolution.getImage4());
+
+        Glide.with(getActivity()).load(urls.get(0)).error(R.drawable.logo).into(img1);
+        Glide.with(getActivity()).load(urls.get(1)).error(R.drawable.logo).into(img2);
+        Glide.with(getActivity()).load(urls.get(2)).error(R.drawable.logo).into(img3);
+        Glide.with(getActivity()).load(urls.get(3)).error(R.drawable.logo).into(img4);
+
+        String symptom[] = mDiseaseSolution.getSymptom().split("!");
+        String sym = "";
+        for (int i=0; i< symptom.length; i++){
+            sym += symptom[i] + "\n";
+        }
+        tvSymptom.setText(sym);
+
+        String pathogen[] = mDiseaseSolution.getPathogens().split("!");
+        String pat = "";
+        for (int i=0; i< pathogen.length; i++){
+            pat += pathogen[i] + "\n";
+        }
+        tvPathogen.setText(pat);
+
+        String cure[] = mDiseaseSolution.getHowtocure().split("!");
+        String cu = "";
+        for (int i=0; i< cure.length; i++){
+            cu += cure[i] + "\n";
+        }
+        tvCure.setText(cu);
+
+
+    }
+    private void setControls(View view) {
+        tvNameEN = view.findViewById(R.id.tv_solution_name_EN);
+        tvNameVN = view.findViewById(R.id.tv_solution_name_VN);
+        tvSymptom = view.findViewById(R.id.tv_symptom);
+        tvPathogen = view.findViewById(R.id.tv_pathogen);
+        tvCure = view.findViewById(R.id.tv_howtocure);
+        img1 = view.findViewById(R.id.img_1) ;
+        img2 = view.findViewById(R.id.img_2) ;
+        img3 = view.findViewById(R.id.img_3) ;
+        img4 = view.findViewById(R.id.img_4) ;
     }
 }

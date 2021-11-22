@@ -15,8 +15,8 @@ def handle_request0():
     res = getByNameDisease(NameDisease_EN)
     return flask.jsonify(Image1=str(res["Image1"]),
                           Image2 = str(res["Image2"]),
-                          Image3=str(res["Image1"]),
-                          Image4=str(res["Image1"]),
+                          Image3=str(res["Image3"]),
+                          Image4=str(res["Image4"]),
                           NameDisease_VN=str(res["NameDisease_VN"]),
                           NameDisease_ENG=str(res["NameDisease_ENG"]),
                           Howtocure=str(res["Howtocure"]),

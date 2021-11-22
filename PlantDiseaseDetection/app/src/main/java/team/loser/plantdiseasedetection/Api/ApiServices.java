@@ -16,7 +16,7 @@ import team.loser.plantdiseasedetection.models.Disease;
 import team.loser.plantdiseasedetection.models.DiseaseSolution;
 
 public interface ApiServices {
-    public static String DOMAIN = "http://192.168.1.7:5000/";
+    public static String DOMAIN = "http://192.168.1.2:5000/";
     Gson gson = new GsonBuilder().setDateFormat("dd MM yyyy HH:mm:ss").create();
 
     ApiServices apiServices = new Retrofit.Builder()

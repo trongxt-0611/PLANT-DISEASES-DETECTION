@@ -205,7 +205,7 @@ public class PredictionFragment extends Fragment {
                 mLoader.dismiss();
                 DiseaseSolution diseaseInfo = response.body();
                 if(diseaseInfo != null) {
-                    Toast.makeText(getContext(),"ddasdasda"+diseaseInfo.toString(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(),"ddasdasda"+diseaseInfo.toString(), Toast.LENGTH_SHORT).show();
                     //TODO: intent => Solution Page
                     ((HomeActivity)getActivity()).ShowSolutionFragment(diseaseInfo);
                     }else {

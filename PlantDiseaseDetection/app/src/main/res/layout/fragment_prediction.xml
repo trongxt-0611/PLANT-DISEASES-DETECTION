@@ -31,8 +31,8 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:scaleType="fitXY"
                     android:background="@android:color/transparent"
+                    android:scaleType="fitXY"
                     android:src="@drawable/take_photo" />
 
                 <TextView

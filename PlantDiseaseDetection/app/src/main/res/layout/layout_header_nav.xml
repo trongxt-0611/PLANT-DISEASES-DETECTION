@@ -9,18 +9,18 @@
     <ImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/logo_team"/>
+        android:src="@drawable/logo"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Plant Diseases Dectection"
-        android:textColor="@color/white"
+        android:textColor="#FFE500"
         android:textSize="18dp"
         android:textStyle="bold"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="developed by Loser-Team"
+        android:text="developed by !Loser-Team"
         android:textColor="@color/white"
         android:textSize="12dp" />
 </LinearLayout>
