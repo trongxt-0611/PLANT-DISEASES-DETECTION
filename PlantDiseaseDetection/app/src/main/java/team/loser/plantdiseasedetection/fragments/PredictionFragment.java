@@ -205,9 +205,9 @@ public class PredictionFragment extends Fragment {
                 mLoader.dismiss();
                 DiseaseSolution diseaseInfo = response.body();
                 if(diseaseInfo != null) {
-                    Toast.makeText(getContext(),diseaseInfo.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"ddasdasda"+diseaseInfo.toString(), Toast.LENGTH_SHORT).show();
                     //TODO: intent => Solution Page
-//                    ((HomeActivity)getActivity()).ShowSolutionFragment(diseaseInfo);
+                    ((HomeActivity)getActivity()).ShowSolutionFragment(diseaseInfo);
                     }else {
                         if(layoutSolution.getChildCount() > 0){
                             layoutSolution.removeAllViews();
@@ -242,7 +242,6 @@ public class PredictionFragment extends Fragment {
                     float roundDbl = (float) (Math.round(c*10000.0)/100.0);
                     tvPercent.setText(roundDbl + " %");
                     String timeStamp = diseaseInfo.getResponse_time();
-                    Toast.makeText(getActivity(), NameDisease,Toast.LENGTH_LONG).show();
                     //TODO: SQLite
                     Disease predicted = new Disease(disease, roundDbl+" %", timeStamp);
                     insertToPredictHistory(predicted);
@@ -344,10 +343,9 @@ public class PredictionFragment extends Fragment {
                     callApiSolution();
 
                 }
-                else{
-                    Toast.makeText(getContext(), "No image to predict",Toast.LENGTH_LONG).show();
+                else {
+                    Toast.makeText(getContext(), "No image to predict", Toast.LENGTH_LONG).show();
                 }
-                Toast.makeText(getContext(),"Going... to solution ", Toast.LENGTH_SHORT).show();
             }
         });
     }
