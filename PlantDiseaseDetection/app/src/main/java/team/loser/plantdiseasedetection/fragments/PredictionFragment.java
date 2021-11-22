@@ -54,9 +54,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import team.loser.plantdiseasedetection.Api.ApiServices;
 import team.loser.plantdiseasedetection.Api.Constants;
+import team.loser.plantdiseasedetection.HomeActivity;
 import team.loser.plantdiseasedetection.R;
 import team.loser.plantdiseasedetection.Sqlite.HistoryDatabase;
 import team.loser.plantdiseasedetection.models.Disease;
+import team.loser.plantdiseasedetection.models.DiseaseSolution;
 import team.loser.plantdiseasedetection.utils.ImageUtil;
 import team.loser.plantdiseasedetection.utils.RealPathUtil;
 
@@ -74,6 +76,7 @@ public class PredictionFragment extends Fragment {
     private File mFile;
     private String mCurrentPhotoPath = null;
     private LinearLayout layoutSolution;
+    private String NameDisease = "";
 
     private ActivityResultLauncher<Intent> mActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -193,6 +196,33 @@ public class PredictionFragment extends Fragment {
             }
         });
     }
+    private void callApiSolution() {
+        mLoader.show();
+        RequestBody requestBodyName = RequestBody.create(MediaType.parse("multipart/form-data"), NameDisease);
+        ApiServices.apiServices.getSolution(requestBodyName).enqueue(new Callback<DiseaseSolution>() {
+            @Override
+            public void onResponse(Call<DiseaseSolution> call, Response<DiseaseSolution> response) {
+                mLoader.dismiss();
+                DiseaseSolution diseaseInfo = response.body();
+                if(diseaseInfo != null) {
+//                    Toast.makeText(getContext(),"ddasdasda"+diseaseInfo.toString(), Toast.LENGTH_SHORT).show();
+                    //TODO: intent => Solution Page
+                    ((HomeActivity)getActivity()).ShowSolutionFragment(diseaseInfo);
+                    }else {
+                        if(layoutSolution.getChildCount() > 0){
+                            layoutSolution.removeAllViews();
+                        }
+                    }
+
+            }
+
+            @Override
+            public void onFailure(Call<DiseaseSolution> call, Throwable t) {
+                mLoader.dismiss();
+                Toast.makeText(getActivity(), "Call api failed",Toast.LENGTH_LONG).show();
+            }
+        });
+    }
     private void callApiSendImage() {
         mLoader.show();
         File file = mFile;
@@ -205,6 +235,7 @@ public class PredictionFragment extends Fragment {
                 Disease diseaseInfo = response.body();
                 if(diseaseInfo != null) {
                     String disease = diseaseInfo.getResponse_class();
+                    NameDisease = disease;
                     tvDiseaseName.setText(disease);
                     String confident = diseaseInfo.getResponse_confident();
                     float c = Float.parseFloat(confident);
@@ -308,7 +339,13 @@ public class PredictionFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //TODO: solution
-                Toast.makeText(getContext(),"Go to solution fragment", Toast.LENGTH_SHORT).show();
+                if(mFile != null){
+                    callApiSolution();
+
+                }
+                else {
+                    Toast.makeText(getContext(), "No image to predict", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

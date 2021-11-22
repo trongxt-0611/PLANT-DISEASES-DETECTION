@@ -1,0 +1,3 @@
+POST http://192.168.1.6:5000/solution 
+Content-Type: multipart/form-data
+Content: "Tomato Leaf Mold"
