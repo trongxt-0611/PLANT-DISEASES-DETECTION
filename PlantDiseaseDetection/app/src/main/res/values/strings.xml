@@ -20,5 +20,9 @@
     <string name="tv_disease_name">Disease name:</string>
     <string name="tv_probabilities">Probabilities:</string>
     <string name="tv_predict_history">Predict history:</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

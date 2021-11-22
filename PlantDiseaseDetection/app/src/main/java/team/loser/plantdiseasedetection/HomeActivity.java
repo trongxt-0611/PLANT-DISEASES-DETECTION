@@ -18,14 +18,17 @@ import com.google.android.material.navigation.NavigationView;
 import team.loser.plantdiseasedetection.fragments.AboutFragment;
 import team.loser.plantdiseasedetection.fragments.HistoryFragment;
 import team.loser.plantdiseasedetection.fragments.PredictionFragment;
+import team.loser.plantdiseasedetection.fragments.SolutionFragment;
+import team.loser.plantdiseasedetection.models.DiseaseSolution;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout mDrawerLayout;
     private static final int FRAGMENT_PREDICT = 0;
     private static final int FRAGMENT_HISTORY = 1;
     private static final int FRAGMENT_ABOUT = 2;
+    private static final int FRAGMENT_SOLUTION = 3;
 
-    private int mCurrentFragment = FRAGMENT_PREDICT;
+    public int mCurrentFragment = FRAGMENT_PREDICT;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,5 +89,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content_frame, fragment);
         transaction.commit();
+    }
+    public void ShowSolutionFragment(DiseaseSolution solution){
+        if(mCurrentFragment != FRAGMENT_SOLUTION){
+            replaceFragment(new SolutionFragment(solution));
+            mCurrentFragment = FRAGMENT_SOLUTION;
+        }
+        mDrawerLayout.closeDrawer(GravityCompat.START);
     }
 }

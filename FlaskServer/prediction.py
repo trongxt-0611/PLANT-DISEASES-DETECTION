@@ -7,7 +7,7 @@ from tensorflow import keras
 import numpy as np
 dir = os.path.dirname(os.path.realpath(__file__))
 IMAGE_SHAPE = (256, 256)
-model = keras.models.load_model('my_model.h5')
+model = keras.models.load_model('G:\PBL4\PLANT-DISEASES-DETECTION\FlaskServer\my_model.h5')
 classes = ['Pepper bell Bacterial_spot', 'Pepper bell healthy',
  'Potato Early blight' ,'Potato Late blight' ,'Potato healthy',
  'Tomato Bacterial spot', 'Tomato Early blight', 'Tomato Late blight',

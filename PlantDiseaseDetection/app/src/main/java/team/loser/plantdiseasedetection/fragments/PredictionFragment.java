@@ -54,6 +54,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import team.loser.plantdiseasedetection.Api.ApiServices;
 import team.loser.plantdiseasedetection.Api.Constants;
+import team.loser.plantdiseasedetection.HomeActivity;
 import team.loser.plantdiseasedetection.R;
 import team.loser.plantdiseasedetection.Sqlite.HistoryDatabase;
 import team.loser.plantdiseasedetection.models.Disease;
@@ -205,6 +206,7 @@ public class PredictionFragment extends Fragment {
                 if(diseaseInfo != null) {
                     Toast.makeText(getContext(),diseaseInfo.toString(), Toast.LENGTH_SHORT).show();
                     //TODO: intent => Solution Page
+                    ((HomeActivity)getActivity()).ShowSolutionFragment(diseaseInfo);
                     }else {
                         if(layoutSolution.getChildCount() > 0){
                             layoutSolution.removeAllViews();
@@ -239,6 +241,7 @@ public class PredictionFragment extends Fragment {
                     float roundDbl = (float) (Math.round(c*10000.0)/100.0);
                     tvPercent.setText(roundDbl + " %");
                     String timeStamp = diseaseInfo.getResponse_time();
+                    Toast.makeText(getActivity(), NameDisease,Toast.LENGTH_LONG).show();
                     //TODO: SQLite
                     Disease predicted = new Disease(disease, roundDbl+" %", timeStamp);
                     insertToPredictHistory(predicted);
@@ -338,6 +341,7 @@ public class PredictionFragment extends Fragment {
                 //TODO: solution
                 if(mFile != null){
                     callApiSolution();
+
                 }
                 else{
                     Toast.makeText(getContext(), "No image to predict",Toast.LENGTH_LONG).show();

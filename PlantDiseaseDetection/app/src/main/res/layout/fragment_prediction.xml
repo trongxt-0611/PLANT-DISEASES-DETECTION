@@ -85,6 +85,7 @@
             android:layout_gravity="center"
             android:scaleType="fitXY"
             android:src="@drawable/plaholder" />
+
     </androidx.cardview.widget.CardView>
 
     <androidx.appcompat.widget.AppCompatButton
