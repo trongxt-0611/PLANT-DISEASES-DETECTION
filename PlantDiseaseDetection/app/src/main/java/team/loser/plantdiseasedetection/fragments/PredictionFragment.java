@@ -198,7 +198,8 @@ public class PredictionFragment extends Fragment {
     }
     private void callApiSolution() {
         mLoader.show();
-        ApiServices.apiServices.getSolution(NameDisease).enqueue(new Callback<DiseaseSolution>() {
+        RequestBody requestBodyName = RequestBody.create(MediaType.parse("multipart/form-data"), NameDisease);
+        ApiServices.apiServices.getSolution(requestBodyName).enqueue(new Callback<DiseaseSolution>() {
             @Override
             public void onResponse(Call<DiseaseSolution> call, Response<DiseaseSolution> response) {
                 mLoader.dismiss();
@@ -206,7 +207,7 @@ public class PredictionFragment extends Fragment {
                 if(diseaseInfo != null) {
                     Toast.makeText(getContext(),diseaseInfo.toString(), Toast.LENGTH_SHORT).show();
                     //TODO: intent => Solution Page
-                    ((HomeActivity)getActivity()).ShowSolutionFragment(diseaseInfo);
+//                    ((HomeActivity)getActivity()).ShowSolutionFragment(diseaseInfo);
                     }else {
                         if(layoutSolution.getChildCount() > 0){
                             layoutSolution.removeAllViews();

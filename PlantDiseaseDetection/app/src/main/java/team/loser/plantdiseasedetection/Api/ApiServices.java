@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -15,7 +16,7 @@ import team.loser.plantdiseasedetection.models.Disease;
 import team.loser.plantdiseasedetection.models.DiseaseSolution;
 
 public interface ApiServices {
-    public static String DOMAIN = "http://192.168.1.8:5000/";
+    public static String DOMAIN = "http://192.168.1.7:5000/";
     Gson gson = new GsonBuilder().setDateFormat("dd MM yyyy HH:mm:ss").create();
 
     ApiServices apiServices = new Retrofit.Builder()
@@ -26,6 +27,8 @@ public interface ApiServices {
     @Multipart
     @POST("upload")
     Call<Disease> sendImage(@Part MultipartBody.Part image);
+
+    @Multipart
     @POST("solution")
-    Call<DiseaseSolution> getSolution(@Part("NameDisease_ENG") String string);
+    Call<DiseaseSolution> getSolution(@Part(Constants.KEY_NAME) RequestBody Name);
 }

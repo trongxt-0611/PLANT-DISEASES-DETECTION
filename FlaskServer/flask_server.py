@@ -21,7 +21,7 @@ def handle_request0():
                           NameDisease_ENG=str(res["NameDisease_ENG"]),
                           Howtocure=str(res["Howtocure"]),
                           Pathogens=str(res["Pathogens"]),
-                            Symptom=str(res["Symptom"])
+                          Symptom=str(res["Symptom"])
                           )
 
 @app.route('/upload', methods = ['POST'])
