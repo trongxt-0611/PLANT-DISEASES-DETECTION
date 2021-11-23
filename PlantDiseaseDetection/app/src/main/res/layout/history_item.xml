@@ -25,43 +25,51 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_history"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tv_disease_name"
-                    android:layout_gravity="center_vertical"/>
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/tv_disease_name" />
+
                 <TextView
+                    android:id="@+id/tv_disease_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Disease Name"
-                    android:textSize="20dp"
-                    android:maxLines="2"
-                    android:textColor="#000"
                     android:layout_gravity="center"
-                    android:id="@+id/tv_disease_name"/>
+                    android:maxLines="2"
+                    android:text="Disease Name"
+                    android:textColor="#000"
+                    android:textSize="20dp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
                 <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="left">
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -70,15 +78,16 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/tv_probabilities"
-                            android:layout_gravity="left"/>
+                            android:layout_gravity="left"
+                            android:text="@string/tv_probabilities" />
+
                         <TextView
+                            android:id="@+id/tv_probabilities"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="69%"
                             android:layout_marginLeft="5dp"
-                            android:textColor="#000"
-                            android:id="@+id/tv_probabilities"/>
+                            android:text="69%"
+                            android:textColor="#000" />
                     </LinearLayout>
                 </RelativeLayout>
 
@@ -91,12 +100,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/tv_time_stamp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="time stamp"
-                            android:gravity="right"/>
+                            android:gravity="right"
+                            android:text="time stamp" />
                     </LinearLayout>
                 </RelativeLayout>
 

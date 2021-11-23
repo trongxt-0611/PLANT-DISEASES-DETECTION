@@ -196,9 +196,9 @@ public class PredictionFragment extends Fragment {
             }
         });
     }
-    private void callApiSolution() {
+    public void callApiSolution(String nameDisease) {
         mLoader.show();
-        RequestBody requestBodyName = RequestBody.create(MediaType.parse("multipart/form-data"), NameDisease);
+        RequestBody requestBodyName = RequestBody.create(MediaType.parse("multipart/form-data"), nameDisease);
         ApiServices.apiServices.getSolution(requestBodyName).enqueue(new Callback<DiseaseSolution>() {
             @Override
             public void onResponse(Call<DiseaseSolution> call, Response<DiseaseSolution> response) {
@@ -340,7 +340,7 @@ public class PredictionFragment extends Fragment {
             public void onClick(View view) {
                 //TODO: solution
                 if(mFile != null){
-                    callApiSolution();
+                    callApiSolution(NameDisease);
 
                 }
                 else {
