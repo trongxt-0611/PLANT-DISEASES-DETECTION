@@ -60,7 +60,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
         holder.tvDiseaseName.setText(disease.getResponse_class());
         holder.tvProbabilities.setText(disease.getResponse_confident());
         holder.tvTimeStamp.setText(disease.getResponse_time());
-        holder.tvDiseaseName.setOnClickListener(new View.OnClickListener() {
+        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mIClickListener.onClickShowSolution(disease);
