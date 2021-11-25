@@ -19,7 +19,7 @@
     //text
     <string name="tv_disease_name">Disease name:</string>
     <string name="tv_probabilities">Probabilities:</string>
-    <string name="tv_predict_history">Predict history:</string>
+    <string name="tv_predict_history">Predict History</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
 <!-- TODO: Remove or change this placeholder text -->

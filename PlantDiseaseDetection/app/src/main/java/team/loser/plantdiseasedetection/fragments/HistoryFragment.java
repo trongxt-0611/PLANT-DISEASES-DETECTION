@@ -71,7 +71,7 @@ public class HistoryFragment extends Fragment {
         historyAdapter.setData(mListDiseases);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         rcvHistory.setLayoutManager(linearLayoutManager);
-        SpacingItemDecorator itemDecorator = new SpacingItemDecorator(10);
+        SpacingItemDecorator itemDecorator = new SpacingItemDecorator(8);
         rcvHistory.addItemDecoration(itemDecorator);
 
         rcvHistory.setAdapter(historyAdapter);
