@@ -20,8 +20,9 @@ import team.loser.plantdiseasedetection.fragments.HistoryFragment;
 import team.loser.plantdiseasedetection.fragments.PredictionFragment;
 import team.loser.plantdiseasedetection.fragments.SolutionFragment;
 import team.loser.plantdiseasedetection.models.DiseaseSolution;
+//import team.loser.plantdiseasedetection.utils.IOnBackPressed;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity<IOnBackPressed> extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout mDrawerLayout;
     private static final int FRAGMENT_PREDICT = 0;
     private static final int FRAGMENT_HISTORY = 1;
@@ -97,4 +98,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);
     }
+//    public void onBackPressed() {
+////        mCurrentFragment = FRAGMENT_PREDICT;
+//        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.content_frame);
+//        if (!(fragment instanceof IOnBackPressed) || !((IOnBackPressed) fragment).onBackPressed()) {
+//            super.onBackPressed();
+//        }
+//    }
 }

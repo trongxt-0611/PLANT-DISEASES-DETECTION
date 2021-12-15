@@ -39,6 +39,28 @@
         <entry key="..\:/Users/XUAN TRONG/Desktop/Thai/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/layout/fragment_solution.xml" value="0.25" />
         <entry key="..\:/Users/XUAN TRONG/Desktop/Thai/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/layout/history_item.xml" value="0.5144927536231884" />
         <entry key="..\:/Users/XUAN TRONG/Desktop/Thai/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/layout/layout_header_nav.xml" value="0.536" />
+        <entry key="..\:/Users/hobat/AndroidStudioProjects/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/drawable/about_background.xml" value="0.2101851851851852" />
+        <entry key="..\:/Users/hobat/AndroidStudioProjects/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/drawable/custom_background.xml" value="0.2101851851851852" />
+        <entry key="..\:/Users/hobat/AndroidStudioProjects/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/drawable/history_background.xml" value="0.1" />
+        <entry key="..\:/Users/hobat/AndroidStudioProjects/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/drawable/ic_baseline_history_24.xml" value="0.2101851851851852" />
+        <entry key="..\:/Users/hobat/AndroidStudioProjects/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.2101851851851852" />
+        <entry key="..\:/Users/hobat/AndroidStudioProjects/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/drawable/ic_baseline_image_search_24.xml" value="0.2101851851851852" />
+        <entry key="..\:/Users/hobat/AndroidStudioProjects/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/drawable/ic_baseline_info_24.xml" value="0.2101851851851852" />
+        <entry key="..\:/Users/hobat/AndroidStudioProjects/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/drawable/ic_iconmonstr_github_1.xml" value="0.2169230769230769" />
+        <entry key="..\:/Users/hobat/AndroidStudioProjects/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/drawable/ic_iconmonstr_github_3.xml" value="0.2169230769230769" />
+        <entry key="..\:/Users/hobat/AndroidStudioProjects/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/drawable/ic_iconmonstr_github_5.xml" value="0.2169230769230769" />
+        <entry key="..\:/Users/hobat/AndroidStudioProjects/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2101851851851852" />
+        <entry key="..\:/Users/hobat/AndroidStudioProjects/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/drawable/predict_background.xml" value="0.2101851851851852" />
+        <entry key="..\:/Users/hobat/AndroidStudioProjects/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/drawable/rounded_corner.xml" value="0.2101851851851852" />
+        <entry key="..\:/Users/hobat/AndroidStudioProjects/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/drawable/shadow_background.xml" value="0.2101851851851852" />
+        <entry key="..\:/Users/hobat/AndroidStudioProjects/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/Users/hobat/AndroidStudioProjects/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/layout/activity_main.xml" value="0.12771739130434784" />
+        <entry key="..\:/Users/hobat/AndroidStudioProjects/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/layout/fragment_about.xml" value="0.25" />
+        <entry key="..\:/Users/hobat/AndroidStudioProjects/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/layout/fragment_history.xml" value="0.12771739130434784" />
+        <entry key="..\:/Users/hobat/AndroidStudioProjects/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/layout/fragment_prediction.xml" value="0.12771739130434784" />
+        <entry key="..\:/Users/hobat/AndroidStudioProjects/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/layout/fragment_solution.xml" value="0.12771739130434784" />
+        <entry key="..\:/Users/hobat/AndroidStudioProjects/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/layout/history_item.xml" value="0.17255434782608695" />
+        <entry key="..\:/Users/hobat/AndroidStudioProjects/PLANT-DISEASES-DETECTION/PlantDiseaseDetection/app/src/main/res/layout/layout_header_nav.xml" value="0.17255434782608695" />
       </map>
     </option>
   </component>

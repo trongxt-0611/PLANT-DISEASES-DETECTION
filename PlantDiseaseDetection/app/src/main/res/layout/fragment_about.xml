@@ -1,7 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_200">
+    android:orientation="vertical"
+    android:background="@drawable/about_background"
+    android:padding="10dp"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#808727"
+        android:text="About App"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="1dp"
+        android:text="Download my_model.h5 from drive then move model.h5 to FlaskServer folder."
+        android:textColor="#C55454"
+        android:drawableLeft="@drawable/ic_baseline_star_rate_24"
+        android:textSize="20sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="1dp"
+        android:drawableLeft="@drawable/ic_baseline_star_rate_24"
+        android:text="Open the Android Studio project and run it to create the APK and run the app."
+        android:textColor="#C55454"
+        android:textSize="20sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="1dp"
+        android:drawableLeft="@drawable/ic_baseline_star_rate_24"
+        android:text="After the server is up and running then go back to the App, in Api/Services edit the IPv4 address to reflect the current IPv4 address of the server."
+        android:textColor="#C55454"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#808727"
+        android:layout_alignParentTop="true"
+        android:text="From Loser Team With Love"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:drawableLeft="@drawable/ic_iconmonstr_github_1"
+        android:layout_marginLeft="10dp"
+        android:text=" TakudoTran"
+        android:textColor="#513D3D"
+        android:textSize="22sp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:drawableLeft="@drawable/ic_iconmonstr_github_1"
+        android:layout_marginLeft="10dp"
+        android:text=" tt2213483"
+        android:textColor="#513D3D"
+        android:textSize="22sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:drawableLeft="@drawable/ic_iconmonstr_github_1"
+        android:layout_marginLeft="10dp"
+        android:text=" hobathanh"
+        android:textColor="#513D3D"
+        android:textSize="22sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:drawableLeft="@drawable/ic_iconmonstr_github_1"
+        android:layout_marginLeft="10dp"
+        android:text=" thaivantho"
+        android:textColor="#513D3D"
+        android:textSize="22sp" />
+
+</LinearLayout>
