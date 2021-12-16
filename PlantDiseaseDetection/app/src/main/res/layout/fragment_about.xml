@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/predict_background"
+    android:background="@drawable/history_background"
     android:padding="10dp"
     android:gravity="center"
     >
@@ -15,6 +15,7 @@
         android:textSize="24dp"
         android:textStyle="bold"
         android:layout_gravity="center"
+
         android:layout_marginBottom="10dp"/>
 
     <TextView
@@ -23,7 +24,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="1dp"
         android:text="Ứng dụng chuẩn đoán bệnh qua lá cây trồng với 15 tình trạng của 3 loại cây trồng là cà chua, khoai tây, ớt chuông."
-        android:textColor="#4E4242"
+        android:textColor="#000"
         android:drawableLeft="@drawable/ic_baseline_star_rate_24"
         android:textSize="20sp" />
     <TextView
@@ -32,9 +33,10 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="1dp"
         android:layout_marginTop="10dp"
+
         android:drawableLeft="@drawable/ic_baseline_star_rate_24"
         android:text="Ứng dụng nhận có thể chuẩn đoán bệnh qua 2 hình thức là chụp ảnh qua camera điện thoại và tải ảnh từ thư mục sẵn có."
-        android:textColor="#4E4242"
+        android:textColor="#000"
         android:textSize="20sp" />
     <TextView
         android:layout_width="match_parent"
@@ -44,7 +46,7 @@
         android:layout_marginTop="10dp"
         android:drawableLeft="@drawable/ic_baseline_star_rate_24"
         android:text="Sau khi chuẩn đoán bệnh ứng dụng sẽ có chức năng hiện thông tin chi tiết về loại bệnh đó và cũng đưa ra biện pháp chữa trị sao cho phù hợp."
-        android:textColor="#4E4242"
+        android:textColor="#000"
         android:textSize="20sp" />
 
     <TextView
@@ -52,7 +54,7 @@
         android:layout_height="wrap_content"
         android:textColor="#000"
         android:layout_alignParentTop="true"
-        android:text="From Loser Team With Love"
+        android:text="From Foures Team With Love"
         android:textSize="24dp"
         android:textStyle="bold"
         android:layout_marginBottom="10dp"
@@ -66,7 +68,7 @@
         android:drawableLeft="@drawable/ic_iconmonstr_github_1"
         android:layout_marginLeft="10dp"
         android:text=" TakudoTran"
-        android:textColor="#4E4242"
+        android:textColor="#000"
         android:textSize="22sp"
         />
     <TextView
@@ -76,7 +78,7 @@
         android:drawableLeft="@drawable/ic_iconmonstr_github_1"
         android:layout_marginLeft="10dp"
         android:text=" tt2213483"
-        android:textColor="#4E4242"
+        android:textColor="#000"
         android:textSize="22sp" />
     <TextView
         android:layout_width="match_parent"
@@ -85,7 +87,7 @@
         android:drawableLeft="@drawable/ic_iconmonstr_github_1"
         android:layout_marginLeft="10dp"
         android:text=" hobathanh"
-        android:textColor="#4E4242"
+        android:textColor="#000"
         android:textSize="22sp" />
     <TextView
         android:layout_width="match_parent"
@@ -94,7 +96,7 @@
         android:drawableLeft="@drawable/ic_iconmonstr_github_1"
         android:layout_marginLeft="10dp"
         android:text=" thaivantho"
-        android:textColor="#4E4242"
+        android:textColor="#000"
         android:textSize="22sp" />
 
 </LinearLayout>

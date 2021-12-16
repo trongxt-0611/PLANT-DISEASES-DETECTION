@@ -46,7 +46,7 @@ dependencies {
 
 
     implementation "androidx.cardview:cardview:1.0.0"
-    implementation 'com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.1'
+    implementation  'com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.1'
     //retrofit call api
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     //gson converter

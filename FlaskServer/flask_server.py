@@ -29,15 +29,11 @@ def handle_request():
     imagefile = flask.request.files['image']
     filename = werkzeug.utils.secure_filename(imagefile.filename)
     print("\nReceived image File name : " + imagefile.filename)
-    # save image
-    # destFolder = os.path.dirname(os.path.realpath(__file__))
-    # path = os.path.join(destFolder, imagefile.filename)
-    # imagefile.save(path)
     imagefile.save(filename)
     # predict 
     res = make_predict(filename)
+    os.remove(filename)
     time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-  #  jsonCure = getByNameDisease(str(res["class"]))
     return flask.jsonify(response_class=str(res["class"]),
                          response_confident=str(res["confident"]),
                          response_time = time)

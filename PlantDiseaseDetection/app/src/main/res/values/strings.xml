@@ -2,8 +2,8 @@
 
     <string name="app_name">FouresT</string>
 
-    <string name="nav_predict">Prediction</string>
-    <string name="nav_history">History</string>
+    <string name="nav_predict">Chẩn đoán</string>
+    <string name="nav_history">Lịch sử</string>
     <string name="nav_about">About</string>
     <string name="nav_drawer_open">Open navigation</string>
     <string name="nav_drawer_close">Close navigation</string>
@@ -11,21 +11,21 @@
     <string name="predict_camera">Camera</string>
     <string name="predict_gallery">Gallery</string>
     //buttons
-    <string name="btn_predict">Predict</string>
+    <string name="btn_predict">Chẩn đoán</string>
     <string name="btn_camera">Camera</string>
     <string name="btn_gallery">Gallery</string>
-    <string name="btn_solution">Get solution</string>
+    <string name="btn_solution">Xem chi tiết</string>
 
     //text
-    <string name="tv_disease_name">Disease name:</string>
-    <string name="tv_probabilities">Probabilities:</string>
-    <string name="tv_predict_history">Predict History</string>
+    <string name="tv_disease_name">Kết quả chẩn đoán:</string>
+    <string name="tv_probabilities">Tỷ lệ chính xác:</string>
+    <string name="tv_predict_history">Lịch sử chẩn đoán</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="tv_symptom">Symptom</string>
-    <string name="tv_pathogen">Pathogen</string>
-    <string name="tv_howtocure">How to cure</string>
+    <string name="tv_symptom">Nguyên nhân gây bệnh</string>
+    <string name="tv_pathogen">Triệu chứng</string>
+    <string name="tv_howtocure">Cách chữa trị</string>
 
 </resources>
