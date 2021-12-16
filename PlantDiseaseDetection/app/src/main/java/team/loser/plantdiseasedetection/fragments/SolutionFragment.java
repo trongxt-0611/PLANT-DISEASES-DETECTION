@@ -27,6 +27,7 @@ import team.loser.plantdiseasedetection.models.DiseaseSolution;
  *
  */
 public class SolutionFragment extends Fragment {
+    public static final String SOLUTION_FRAGMENT_NAME = SolutionFragment.class.getName();
     private View mView;
     private TextView tvNameEN, tvNameVN, tvSymptom, tvPathogen, tvCure;
     private ImageView img1 ,img2, img3, img4;

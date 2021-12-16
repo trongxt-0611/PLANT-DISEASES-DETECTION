@@ -3,6 +3,11 @@
   <component name="WizardSettings">
     <option name="children">
       <map>
+        <entry key="imageWizard">
+          <value>
+            <PersistentState />
+          </value>
+        </entry>
         <entry key="vectorWizard">
           <value>
             <PersistentState>
@@ -18,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$PROJECT_DIR$/../../../../XUAN%20TRONG/AppData/Local/Android/Sdk/icons/material/materialicons/delete_forever/baseline_delete_forever_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/star_rate/baseline_star_rate_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,9 +33,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="e00000" />
-                            <entry key="outputName" value="ic_baseline_delete_forever_24" />
-                            <entry key="sourceFile" value="C:\Users\XUAN TRONG\Desktop\PLANT-DISEASES-DETECTION\PlantDiseaseDetection" />
+                            <entry key="color" value="a76955" />
+                            <entry key="outputName" value="ic_baseline_star_rate_24" />
+                            <entry key="sourceFile" value="C:\Users\hobat\AndroidStudioProjects\PLANT-DISEASES-DETECTION\iconmonstr-github-3.svg" />
                           </map>
                         </option>
                       </PersistentState>

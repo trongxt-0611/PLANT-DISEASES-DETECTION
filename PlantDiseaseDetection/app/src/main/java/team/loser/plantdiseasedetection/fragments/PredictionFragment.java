@@ -14,6 +14,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -61,6 +63,7 @@ import team.loser.plantdiseasedetection.models.Disease;
 import team.loser.plantdiseasedetection.models.DiseaseSolution;
 import team.loser.plantdiseasedetection.utils.ImageUtil;
 import team.loser.plantdiseasedetection.utils.RealPathUtil;
+
 
 public class PredictionFragment extends Fragment {
     public static final int CAMERA_REQUEST_CODE = 1;
@@ -361,5 +364,4 @@ public class PredictionFragment extends Fragment {
         imvDiseaseImg = view.findViewById(R.id.img_disease);
         btnPredict = view.findViewById(R.id.btn_predict);
     }
-
 }
