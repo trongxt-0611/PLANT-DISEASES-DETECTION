@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import team.loser.plantdiseasedetection.R;
 
 public class AboutFragment extends Fragment {
+    public final static String ABOUT_FRAGMENT_NAME = AboutFragment.class.getName();
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
