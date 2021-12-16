@@ -364,22 +364,4 @@ public class PredictionFragment extends Fragment {
         imvDiseaseImg = view.findViewById(R.id.img_disease);
         btnPredict = view.findViewById(R.id.btn_predict);
     }
-//    boolean doubleBackToExitPressedOnce = false;
-//
-//    public boolean onBackPressed() {
-//        if (doubleBackToExitPressedOnce) {
-//            return false;
-//        }
-//
-//        this.doubleBackToExitPressedOnce = true;
-//        Toast.makeText(getContext(), "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-//
-//        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                doubleBackToExitPressedOnce = false;
-//            }
-//        }, 2000);
-//        return true;
-//    }
 }

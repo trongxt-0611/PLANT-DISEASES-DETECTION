@@ -32,6 +32,7 @@ import team.loser.plantdiseasedetection.models.DiseaseSolution;
 import team.loser.plantdiseasedetection.utils.SpacingItemDecorator;
 
 public class HistoryFragment extends Fragment {
+    public static final String HISTORY_FRAGMENT_NAME = HistoryFragment.class.getName();
     private RecyclerView rcvHistory;
     private HistoryAdapter historyAdapter;
     private List<Disease> mListDiseases;

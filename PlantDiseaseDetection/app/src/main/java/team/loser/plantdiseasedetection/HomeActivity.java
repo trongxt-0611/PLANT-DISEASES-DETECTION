@@ -1,8 +1,12 @@
 package team.loser.plantdiseasedetection;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -20,9 +24,9 @@ import team.loser.plantdiseasedetection.fragments.HistoryFragment;
 import team.loser.plantdiseasedetection.fragments.PredictionFragment;
 import team.loser.plantdiseasedetection.fragments.SolutionFragment;
 import team.loser.plantdiseasedetection.models.DiseaseSolution;
-//import team.loser.plantdiseasedetection.utils.IOnBackPressed;
 
-public class HomeActivity<IOnBackPressed> extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout mDrawerLayout;
     private static final int FRAGMENT_PREDICT = 0;
     private static final int FRAGMENT_HISTORY = 1;
@@ -48,7 +52,12 @@ public class HomeActivity<IOnBackPressed> extends AppCompatActivity implements N
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        replaceFragment(new PredictionFragment());
+        //transaction Fragment
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.content_frame, new PredictionFragment());
+        fragmentTransaction.commit();
+        mCurrentFragment = FRAGMENT_PREDICT;
+
         navigationView.getMenu().findItem(R.id.nav_predict).setChecked(true);
     }
 
@@ -57,47 +66,71 @@ public class HomeActivity<IOnBackPressed> extends AppCompatActivity implements N
         int id = item.getItemId();
         if(id == R.id.nav_predict){
             if(mCurrentFragment != FRAGMENT_PREDICT){
-                replaceFragment(new PredictionFragment());
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.add(R.id.content_frame, new PredictionFragment());
+                fragmentTransaction.commit();
                 mCurrentFragment = FRAGMENT_PREDICT;
             }
         }
         else if(id == R.id.nav_history){
             if(mCurrentFragment != FRAGMENT_HISTORY){
-                replaceFragment(new HistoryFragment());
+                HistoryFragment historyFragment = new HistoryFragment();
+                replaceFragment(historyFragment,historyFragment.HISTORY_FRAGMENT_NAME);
                 mCurrentFragment = FRAGMENT_HISTORY;
             }
         }
         else if(id == R.id.nav_about){
             if(mCurrentFragment != FRAGMENT_ABOUT){
-                replaceFragment(new AboutFragment());
+                AboutFragment aboutFragment = new AboutFragment();
+                replaceFragment(aboutFragment,aboutFragment.ABOUT_FRAGMENT_NAME);
                 mCurrentFragment = FRAGMENT_ABOUT;
             }
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
-
+    boolean doubleBackToExitPressedOnce = false;
     @Override
     public void onBackPressed() {
         if(mDrawerLayout.isDrawerOpen(GravityCompat.START)){
             mDrawerLayout.closeDrawer(GravityCompat.START);
         }else {
-            super.onBackPressed();
+
+
+            if (doubleBackToExitPressedOnce) {
+                super.onBackPressed();
+                return;
+            }
+
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(HomeActivity.this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 1500);
+
         }
+
     }
 
-    private void replaceFragment(Fragment fragment){
+    private void replaceFragment(Fragment fragment,String fragmentName){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content_frame, fragment);
+        transaction.addToBackStack(fragmentName);
         transaction.commit();
     }
     public void ShowSolutionFragment(DiseaseSolution solution){
         if(mCurrentFragment != FRAGMENT_SOLUTION){
-            replaceFragment(new SolutionFragment(solution));
+            SolutionFragment solutionFragment = new SolutionFragment(solution);
+            replaceFragment(solutionFragment,solutionFragment.SOLUTION_FRAGMENT_NAME);
             mCurrentFragment = FRAGMENT_SOLUTION;
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);
     }
+
 //    public void onBackPressed() {
 ////        mCurrentFragment = FRAGMENT_PREDICT;
 //        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.content_frame);
@@ -105,4 +138,8 @@ public class HomeActivity<IOnBackPressed> extends AppCompatActivity implements N
 //            super.onBackPressed();
 //        }
 //    }
+
+
+
+
 }
