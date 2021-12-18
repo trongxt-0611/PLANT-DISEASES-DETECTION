@@ -18,7 +18,7 @@
 
     //text
     <string name="tv_disease_name">Kết quả chẩn đoán:</string>
-    <string name="tv_probabilities">Tỷ lệ chính xác:</string>
+    <string name="tv_probabilities">Độ chính xác:</string>
     <string name="tv_predict_history">Lịch sử chẩn đoán</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
